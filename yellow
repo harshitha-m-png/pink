@@ -1,0 +1,66 @@
+#include <stdio.h>
+
+void bubbleSortAscending(int array[], int size) {
+    int i, j, temp;
+    for (i = 0; i < size - 1; i++) {
+        for (j = 0; j < size - i - 1; j++) {
+            if (array[j] > array[j + 1]) {
+                temp = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = temp;
+            }
+        }
+    }
+}
+
+void bubbleSortDescending(int array[], int size) {
+    int i, j, temp;
+    for (i = 0; i < size - 1; i++) {
+        for (j = 0; j < size - i - 1; j++) {
+            if (array[j] < array[j + 1]) {
+                temp = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = temp;
+            }
+        }
+    }
+}
+
+void printArray(int array[], int size) {
+    int i;
+    for (i = 0; i < size; i++) {
+        printf("%d ", array[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int array[] = {64, 34, 25, 12, 22, 11, 90};
+    int size = sizeof(array) / sizeof(array[0]);
+    int choice;
+
+    printf("Original array: ");
+    printArray(array, size);
+
+    printf("Enter your choice of bubble sorting:\n");
+    printf("1. Ascending\n");
+    printf("2. Descending\n");
+    scanf("%d", &choice);
+
+    switch (choice) {
+        case 1:
+            bubbleSortAscending(array, size);
+            break;
+        case 2:
+            bubbleSortDescending(array, size);
+            break;
+        default:
+            printf("Invalid choice\n");
+            return 1;
+    }
+
+    printf("Sorted array: ");
+    printArray(array, size);
+
+    return 0;
+}
